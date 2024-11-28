@@ -1,6 +1,14 @@
 AWS code build:
 
-AWS code commit is no longer available for new users, so we have to connect to third party source repositories such as git.
+"AWS code commit" is no longer available for new users, so we have to connect to third party source repositories such as git to fetch the source code and to build. 
+
+1. On console type Code Build -> create project.
+
+2. Enter project name.
+3. Choose GitHub from the primary source drop down. 
+4. Enter the reposotiry details, fill all rest of the details.
+
+
 
 
 So, When I was running my codebuild, it was trying to fetch the source by connecting to github, but I was getting below error.
