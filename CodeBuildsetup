@@ -1,0 +1,47 @@
+AWS code build:
+
+AWS code commit is no longer available for new users, so we have to connect to third party source repositories such as git.
+
+
+So, When I was running my codebuild, it was trying to fetch the source by connecting to github, but I was getting below error.
+
+CLIENT_ERROR: Failed to get access token from arn:aws:codeconnections:us-east-1:783764610763:connection/d0029bce-f9c7-4c76-860f-ac5f4c5bcd46: 
+Access denied to connection arn:aws:codeconnections:us-east-1:783764610763:connection/d0029bce-f9c7-4c76-860f-ac5f4c5bcd46
+
+To resolve the above issue 
+1. Go to IAM -> Roles -> Find the role which is used by the code Build 
+2. Click on ADD permissions
+3. Create inline policy
+4. type codestarconnections and select all read permissions and click on next
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "codestar-connections:GetHost",
+                "codestar-connections:GetRepositoryLink",
+                "codestar-connections:GetInstallationUrl",
+                "codestar-connections:GetConnection",
+                "codestar-connections:GetIndividualAccessToken",
+                "codestar-connections:GetSyncConfiguration",
+                "codestar-connections:GetSyncBlockerSummary",
+                "codestar-connections:UseConnection",
+                "codestar-connections:GetConnectionToken",
+                "codestar-connections:PassRepository",
+                "codestar-connections:GetResourceSyncStatus",
+                "codestar-connections:StartOAuthHandshake",
+                "codestar-connections:GetRepositorySyncStatus",
+                "codestar-connections:StartAppRegistrationHandshake",
+                "codestar-connections:RegisterAppCode",
+                "codestar-connections:PassConnection"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+5. Add the policy name and save. 
+
+
