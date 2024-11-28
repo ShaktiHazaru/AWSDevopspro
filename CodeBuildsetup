@@ -10,17 +10,16 @@ AWS code build:
 
 
 
-
 So, When I was running my codebuild, it was trying to fetch the source by connecting to github, but I was getting below error.
 
 CLIENT_ERROR: Failed to get access token from arn:aws:codeconnections:us-east-1:783764610763:connection/d0029bce-f9c7-4c76-860f-ac5f4c5bcd46: 
 Access denied to connection arn:aws:codeconnections:us-east-1:783764610763:connection/d0029bce-f9c7-4c76-860f-ac5f4c5bcd46
 
 To resolve the above issue 
-1. Go to IAM -> Roles -> Find the role which is used by the code Build 
-2. Click on ADD permissions
-3. Create inline policy
-4. type codestarconnections and select all read permissions and click on next
+a. Go to IAM -> Roles -> Find the role which is used by the code Build 
+b. Click on ADD permissions
+c. Create inline policy
+d. type codestarconnections and select all read permissions and click on next
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -50,6 +49,17 @@ To resolve the above issue
     ]
 }
 
-5. Add the policy name and save. 
+e. Add the policy name and save. 
 
+5. In the build spec  we need to give below commands.
+As this is a simple C++ project, we used below. 
 
+version: 0.2
+
+phases:
+  build:
+    commands:
+       - g++ hello-world.cpp -o hello-world
+artifacts:
+  files:
+   - 'hello-world' 
