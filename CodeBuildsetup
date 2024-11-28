@@ -52,7 +52,9 @@ d. type codestarconnections and select all read permissions and click on next
 e. Add the policy name and save. 
 
 5. In the build spec  we need to give below commands.
-As this is a simple C++ project, we used below. 
+As this is a simple C++ project, we used below.
+
+C++ source code will be stored with .cpp extension.
 
 version: 0.2
 
@@ -63,3 +65,6 @@ phases:
 artifacts:
   files:
    - 'hello-world' 
+
+To validate: 
+we can validate the s3 bucket to check if the articrafts are stored after build is complete.
