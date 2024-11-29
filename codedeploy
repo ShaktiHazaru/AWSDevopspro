@@ -21,6 +21,9 @@ for linux:
 
 https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install-linux.html
 
+
+Once done, create the code deploy application, deployment group and then the deployment. 
+
 Imp: 
 -----
 We need to zip the appspec.yml and script file and load it in the s3 bucket for codedeploy agent to pickup and provide the location details in the deployment.  
