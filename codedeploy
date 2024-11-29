@@ -22,5 +22,24 @@ for linux:
 https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install-linux.html
 
 Imp: 
+-----
 We need to zip the appspec.yml and script file and load it in the s3 bucket for codedeploy agent to pickup and provide the location details in the deployment.  
 
+
+**** please note **** ***************************************************************
+
+Dont zip the files by creating a folder and place the appsec.yml and scripts folder.
+Rather zip appsec.yml and other files and create a folder. 
+
+otherwise, we'll get below error.
+BeforeInstall   0 seconds  Failed  UnknownError
+
+Always check the logs on the host under path /var/log/aws/codedeploy-agent 
+
+"The CodeDeploy agent did not find an AppSpec file within the unpacked revision directory at revision-relative path \\\"appspec.yml\\\"
+
+
+Refer this link: https://repost.aws/questions/QUhNd2_SC5RXuGtlwQbV2kXg/error-code-unknownerror-in-aws-codepipeline-beforeinstall
+
+
+****************************************************************************************
