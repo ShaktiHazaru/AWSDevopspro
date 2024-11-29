@@ -1,1 +1,26 @@
+To start with code Build, below 5 are necessary.
+
+1. Create an IAM role for CodeDeploy with S3ReadOnlyAccess.
+2. Create an IAM role for EC2 with S3ReadOnlyAccess. 
+3. Launch EC2 instance with appropriate EC2 role.
+4. Install CodeDeploy agent in EC2. 
+5. Configure CodeDeploy service. 
+
+ssh command from mac to aws ubuntu machine
+
+chmod 400 abc.pem
+ssh -i abc.pem ubuntu@public-ip-address 
+
+
+Follow the documentation to Deploy codedeploy agent on ubuntu, 
+https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install-ubuntu.html
+
+for linux:
+
+ AWS CodeDeploy Agent Installation:
+
+https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install-linux.html
+
+Imp: 
+We need to zip the appspec.yml and script file and load it in the s3 bucket for codedeploy agent to pickup and provide the location details in the deployment.  
 
