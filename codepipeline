@@ -1,0 +1,21 @@
+For the code pipeline, 
+
+we need to do  make two changes
+
+1. To update the code build spec file as below,
+
+under the artifacts section, we should mention **/* , this means all files including appspec.yml will be pushed to the EC2 instance and the code deploy will pick up the appspec.yaml. 
+If we dont mention all files, the code build will fail as it wont be able fo find the appspec.yml. 
+
+
+version: 0.0
+phases:
+  build:
+    commands:
+       - g++ hello-world.cpp -o hello
+artifacts:
+  files:
+   - '**/*' 
+
+
+  2. Update the 
