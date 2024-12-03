@@ -18,4 +18,15 @@ artifacts:
    - '**/*' 
 
 
-  2. Update the 
+  2. Update the appspec.yaml as below
+
+version: 0.0
+os: linux
+files:
+   - source: /
+     destination: /tmp
+
+This will just copy the source files to destination. 
+But as in Code deploy we will not to mention the scripts folder path and runbuild.sh
+
+
